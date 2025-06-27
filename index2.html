@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snapchat Web Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+    }
+
+    header {
+      background-color: #FFFC00;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      color: black;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      margin: 0 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    nav button:hover {
+      text-decoration: underline;
+    }
+
+    .main {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    .snap {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+
+    .snap:hover {
+      transform: scale(1.03);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #FFFC00;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+
+    footer button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .active {
+      font-weight: bold;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">SnapClone</div>
+    <nav>
+      <button onclick="goHome()" id="homeBtn">Home</button>
+      <button onclick="goChat()" id="chatBtn">Chat</button>
+      <button onclick="goStory()" id="storyBtn">Stories</button>
+    </nav>
+  </header>
+
+  <div class="main" id="content">
+    <!-- 20 placeholder images -->
+    <img src="https://picsum.photos/300?random=1" class="snap" />
+    <img src="https://picsum.photos/300?random=2" class="snap" />
+    <img src="https://picsum.photos/300?random=3" class="snap" />
+    <img src="https://picsum.photos/300?random=4" class="snap" />
+    <img src="https://picsum.photos/300?random=5" class="snap" />
+    <img src="https://picsum.photos/300?random=6" class="snap" />
+    <img src="https://picsum.photos/300?random=7" class="snap" />
+    <img src="https://picsum.photos/300?random=8" class="snap" />
+    <img src="https://picsum.photos/300?random=9" class="snap" />
+    <img src="https://picsum.photos/300?random=10" class="snap" />
+    <img src="https://picsum.photos/300?random=11" class="snap" />
+    <img src="https://picsum.photos/300?random=12" class="snap" />
+    <img src="https://picsum.photos/300?random=13" class="snap" />
+    <img src="https://picsum.photos/300?random=14" class="snap" />
+    <img src="https://picsum.photos/300?random=15" class="snap" />
+    <img src="https://picsum.photos/300?random=16" class="snap" />
+    <img src="https://picsum.photos/300?random=17" class="snap" />
+    <img src="https://picsum.photos/300?random=18" class="snap" />
+    <img src="https://picsum.photos/300?random=19" class="snap" />
+    <img src="https://picsum.photos/300?random=20" class="snap" />
+  </div>
+
+  <footer>
+    <button onclick="goHome()">🏠</button>
+    <button onclick="goChat()">💬</button>
+    <button onclick="goStory()">📺</button>
+  </footer>
+
+  <script>
+    function setActive(id) {
+      document.getElementById('homeBtn').classList.remove('active');
+      document.getElementById('chatBtn').classList.remove('active');
+      document.getElementById('storyBtn').classList.remove('active');
+      document.getElementById(id).classList.add('active');
+    }
+
+    function goHome() {
+      setActive('homeBtn');
+      document.getElementById('content').innerHTML = '';
+      for (let i = 1; i <= 20; i++) {
+        const img = document.createElement('img');
+        img.src = https://picsum.photos/300?random=${i};
+        img.className = 'snap';
+        document.getElementById('content').appendChild(img);
+      }
+    }
+
+    function goChat() {
+      setActive('chatBtn');
+      document.getElementById('content').innerHTML = `
+        <h2>Chat</h2>
+        <p>This is a demo chat section. In a real app, chats would load here.</p>
+      `;
+    }
+
+    function goStory() {
+      setActive('storyBtn');
+      document.getElementById('content').innerHTML = `
+        <h2>Stories</h2>
+        <p>Story feature coming soon! 🔥</p>
+      `;
+    }
+
+    // Default to home on load
+    window.onload = goHome;
+  </script>
+
+</body>
+</html>
